@@ -1,0 +1,36 @@
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <main>
+    <h1>About David</h1>
+    <p class="fs-5 col-md-8">The Story</p>
+    <hr>
+
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h2>A long, long time ago....</h2>
+        <p>
+          I’ve started web development in college where I’ve taken web development and advanced web development classes. 
+          I’ve studied OOP, HTML, CSS, using LAMP structuring. After college I worked through Career Foundry where I learned Ruby on Rails, 
+          JavaScript, AJAX, along with some better practices with HTML, CSS(Bootstrap).
+        </p>
+        <p>
+          I then started my first professional job as a web developer for 2 years with the Conference Board where as a Jr. Developer 
+          I worked with PHP (Laravel), Jquery, and Bootstrap CSS to (re)build the intranet.
+        </p>
+        <p>
+          The last (almost) 3 years I’ve been learning new languages (Javascript (Vue and Express), Elixir (Phoenix), updated Ruby (on Rails)),
+          and new protocals(GraphQL) while trying to start a business. 
+          The current language and framework I’ve settled on have been Elixir and Phoenix framework as 
+          I enjoy programming in the language and love the speed and concurrency offered by the Beam VM.
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Obligitory Self Image</h2>
+        <%= img_tag Routes.static_path(@conn, "/images/dave.jpg"),
+              width: "100%", 
+              height: "300",
+              preserveAspectRatio: "xMidYMid slice"  %>
+      </div>
+    </div>
+  </main>
+</div>

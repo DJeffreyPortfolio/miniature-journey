@@ -1,0 +1,14 @@
+<div class="navbar-nav ms-auto">
+  <%= if @current_user do %>
+    <div class="btn-group" role="group" aria-label="Session Management">
+      <%= @current_user.email %>
+      <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-secondary" %>
+      <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-warning" %>
+    </div>
+  <% else %>
+    <div class="btn-group" role="group" aria-label="Session Management">
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-primary" %>
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-secondary" %>
+    </div>
+  <% end %>  
+</div>

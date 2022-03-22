@@ -1,0 +1,29 @@
+<div class="album py-5">
+  <div class="container">
+    <h3 class="text-center bold">Products</h3>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="groceries">
+      <%= for grocery <- @groceries do %>
+        <div class="col" id={"grocery-#{grocery.id}"}>
+          <div class="card shadow-sm">
+            <%= img_tag grocery.image,
+              class: "bd-placeholder-img card-img-top",
+              width: "100%", 
+              height: "225",
+              preserveAspectRatio: "xMidYMid slice"  %>
+
+            <div class="card-body">
+              <h5 class="card-title"><%= String.capitalize(grocery.name) %></h5>
+              <p class="card-text">Quantity: <%= grocery.quantity %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= live_redirect "Show", to: Routes.public_grocery_show_path(@socket, :show, grocery), class: "btn btn-sm btn-outline-secondary" %>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

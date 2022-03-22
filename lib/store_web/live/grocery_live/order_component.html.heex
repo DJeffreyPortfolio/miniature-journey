@@ -1,0 +1,34 @@
+
+<div>  
+    <.form
+    let={f}
+    for={@changeset}
+    id="order-form"
+    amount={@amount}
+    total={@total_price}
+    current_user={@current_user}
+    phx-target={@myself}
+    phx-change="total"
+    phx-submit="save">
+
+    <%= hidden_input f, :name, value: @name %>
+    <%= hidden_input f, :total, value: @total_price %>
+    <%= hidden_input f, :user_id, value: @current_user %>
+
+    <div class="mb-3">    
+      <%= label f, :quantity, class: "form-label" %>
+      <%= select f, :quantity, 1..@amount, class: "form-select" %>
+      <%= error_tag f, :quantity %>
+    </div>
+
+    <div class="mb-3">
+        <%= label f, :total, "Total: $", class: "form-label" %>
+        <%= @total_price %>
+    </div>
+  
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving...", class: "btn btn-primary" %>
+    </div>
+  </.form>
+</div>

@@ -1,4 +1,9 @@
-<span class="px-4 pt-5 my-5 text-center"><%= live_redirect "Back", to: Routes.public_grocery_index_path(@socket, :index) %></span>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="/" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= live_redirect "Product Listing", to: Routes.public_grocery_index_path(@socket, :index), class: "text-secondary" %></li>
+  </ol>
+</nav>
 
 <div class="px-4 pt-5 my-5 text-center">
   <h1 class="display-4 fw-bold"><%= String.capitalize(@grocery.name) %></h1>

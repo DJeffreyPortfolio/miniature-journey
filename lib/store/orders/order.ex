@@ -16,7 +16,7 @@ defmodule Store.Orders.Order do
   @doc false
   def changeset(order, attrs) do
     order
-    |> cast(attrs, [:product, :quantity, :total])
-    |> validate_required([:quantity])
+    |> cast(attrs, [:product, :quantity, :total, :user_id])
+    |> validate_required([:product, :quantity, :total, :user_id])
   end
 end

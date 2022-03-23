@@ -17,6 +17,12 @@ defmodule Store.Orders do
       iex> list_orders()
       [%Order{}, ...]
 
+      adding user_id to list orders
+      as I at this current time have no 
+      need to list all orders, but instead 
+      have a need to list all orders for a 
+      user when they are adding to the cart.
+
   """
   def list_orders do
     Repo.all(Order)

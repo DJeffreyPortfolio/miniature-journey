@@ -9,16 +9,16 @@
         <h2>See the store</h2>
         <p>Here's the front of the store.</p>
         <%= if @current_user do %>
-          <p><a href="/groceries">Product Store</a></p>
+          <p><a href="/groceries" class="text-secondary">Product Store</a></p>
         <% else %>
-          <p><a href="/public/groceries">Product Store</a></p>
+          <p><a href="/public/groceries" class="text-secondary">Product Store</a></p>
         <% end %>
       </div>
 
       <div class="col-md-6">
         <h2>About</h2>
         <p>All about David</p>
-        <p><a href="/about">About</a></p>
+        <p><a href="/about" class="text-secondary">About</a></p>
       </div>
     </div>
   </main>

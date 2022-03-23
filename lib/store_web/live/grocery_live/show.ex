@@ -3,6 +3,7 @@ defmodule StoreWeb.GroceryLive.Show do
 
   alias Store.Products
   alias Store.Accounts
+  alias Store.Orders
 
   @impl true
   def mount(_params, %{"user_token" => token } = _session, socket) do
@@ -14,9 +15,12 @@ defmodule StoreWeb.GroceryLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
+    IO.inspect(socket)
     {:noreply,
      socket
+     |> assign(:page_title, "Edit Grocery")
      |> assign(:grocery, Products.get_grocery!(id))
+     |> assign(:orders, Orders.list_orders)
     }
   end
 

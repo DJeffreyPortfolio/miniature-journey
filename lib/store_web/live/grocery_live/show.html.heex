@@ -11,7 +11,12 @@
   </.modal>
 <% end %>
 
-<span class="px-4 pt-5 my-5 text-center"><%= live_redirect "Back", to: Routes.grocery_index_path(@socket, :index) %></span>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="/" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= live_redirect "Product Listing", to: Routes.grocery_index_path(@socket, :index), class: "text-secondary" %></li>
+  </ol>
+</nav>
 
 <div class="row align-items-md-stretch">
   <div class="col-md-6">
@@ -40,7 +45,27 @@
 
 
   <div class="col-md-6">
-    <div class="h-100 p-5 bg-light border rounded-3">
+    <div class="h-100 p-5 border rounded-3">
+      <h2>Current Cart</h2>
+      <div class="row" id="orders">
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+        <%= for order <- @orders do %>
+        <ul>
+          <li><%= order.product %></li>
+          <li><%= order.quantity %></li>
+          <li><%= order.total %></li>
+          <li><%= order.user_id %></li>
+        </ul>
+        <% end %>
+      </div>
       <h2>Add to Cart</h2>
       <.live_component
         module={StoreWeb.GroceryLive.OrderComponent}

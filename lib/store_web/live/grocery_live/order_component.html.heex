@@ -1,4 +1,3 @@
-
 <div>  
     <.form
     let={f}
@@ -11,7 +10,7 @@
     phx-change="total"
     phx-submit="save">
 
-    <%= hidden_input f, :name, value: @name %>
+    <%= hidden_input f, :product, value: @name %>
     <%= hidden_input f, :total, value: @total_price %>
     <%= hidden_input f, :user_id, value: @current_user %>
 
@@ -23,7 +22,8 @@
 
     <div class="mb-3">
         <%= label f, :total, "Total: $", class: "form-label" %>
-        <%= @total_price %>
+        <%= @total_price %><br>
+        <%= @current_user %>
     </div>
   
   

@@ -7,7 +7,6 @@ defmodule Store.Orders do
   alias Store.Repo
 
   alias Store.Orders.Order
-  alias Store.Accounts.User
 
   @doc """
   Returns the list of orders.
@@ -24,8 +23,10 @@ defmodule Store.Orders do
       user when they are adding to the cart.
 
   """
-  def list_orders do
-    Repo.all(Order)
+  def list_orders(user) do
+    Order
+    |> where([o], o.user_id == ^user.id)
+    |> Repo.all()
   end
 
   @doc """

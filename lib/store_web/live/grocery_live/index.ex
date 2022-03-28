@@ -7,10 +7,12 @@ defmodule StoreWeb.GroceryLive.Index do
 
   @impl true
   def mount(_params,  %{"user_token" => token } = _session, socket) do
+    if connected?(socket), do: Products.subscribe()
     {:ok, 
       socket
       |> assign_user(token)
       |> assign(:groceries, list_groceries())
+      |> assign(temporary_assigns: [groceries: []])
     }
   end
 
@@ -47,6 +49,16 @@ defmodule StoreWeb.GroceryLive.Index do
 
   defp list_groceries do
     Products.list_groceries()
+  end
+
+  @impl true
+  def handle_info({:grocery_created, grocery}, socket) do
+    {:noreply, update(socket, :groceries, fn groceries -> [grocery | groceries] end)}
+  end
+
+  @impl true
+  def handle_info({:grocery_updated, grocery}, socket) do
+    {:noreply, update(socket, :groceries, fn groceries -> [grocery | groceries] end)}
   end
 
   defp assign_user(socket, token) do

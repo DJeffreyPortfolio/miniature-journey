@@ -27,11 +27,9 @@ defmodule StoreWeb.GroceryLive.OrderComponent do
   
     def handle_event("save", %{"order" => order_params}, socket) do
         case Orders.create_order(order_params) do
-            {:ok, _order} ->
-                {:noreply,
-                socket
-                |> put_flash(:info, "Order created successfully")
-            }
+            {:ok, order} ->
+              send self(), {:update_order, order}
+              {:noreply, socket}
 
             {:error, %Ecto.Changeset{} = changeset} ->
                 {:noreply, assign(socket, changeset: changeset)}

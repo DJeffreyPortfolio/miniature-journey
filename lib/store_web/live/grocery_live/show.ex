@@ -15,12 +15,26 @@ defmodule StoreWeb.GroceryLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
-    IO.inspect(socket)
     {:noreply,
      socket
      |> assign(:page_title, "Edit Grocery")
      |> assign(:grocery, Products.get_grocery!(id))
-     |> assign(:orders, Orders.list_orders)
+     |> assign(:orders, Orders.list_orders(socket.assigns.current_user))
+    }
+  end
+
+  @impl true
+  def handle_event("delete", %{"id" => id}, socket) do
+    order = Orders.get_order!(id)
+    {:ok, _} = Orders.delete_order(order)
+
+    {:noreply, assign(socket, :orders, Orders.list_orders(socket))}
+  end
+
+  def handle_info({:update_order, order}, socket) do
+    {:noreply, 
+      socket
+      |> assign(:orders, Orders.list_orders(socket))
     }
   end
 

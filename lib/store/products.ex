@@ -18,7 +18,7 @@ defmodule Store.Products do
 
   """
   def list_groceries do
-    Repo.all(Grocery)
+    Repo.all(from g in Grocery, order_by: [desc: g.updated_at])
   end
 
   @doc """
@@ -54,6 +54,7 @@ defmodule Store.Products do
     |> Grocery.changeset(attrs)
     |> Ecto.Changeset.put_change(:image, image_select(attrs))
     |> Repo.insert()
+    |> broadcast(:grocery_created)
   end
 
   # Image select from folder priv/images
@@ -87,6 +88,7 @@ defmodule Store.Products do
     grocery
     |> Grocery.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:grocery_updated)
   end
 
   @doc """
@@ -116,5 +118,16 @@ defmodule Store.Products do
   """
   def change_grocery(%Grocery{} = grocery, attrs \\ %{}) do
     Grocery.changeset(grocery, attrs)
+  end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Store.PubSub, "groceries")
+  end
+
+  defp broadcast({:error, _reason} = error, _event), do: error
+
+  defp broadcast({:ok, grocery}, event) do
+    Phoenix.PubSub.broadcast(Store.PubSub, "groceries", {event, grocery})
+    {:ok, grocery}
   end
 end

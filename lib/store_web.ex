@@ -46,7 +46,7 @@ defmodule StoreWeb do
     quote do
       use Phoenix.LiveView,
         layout: {StoreWeb.LayoutView, "live.html"}
-
+        
       unquote(view_helpers())
     end
   end

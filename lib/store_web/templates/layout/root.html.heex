@@ -10,13 +10,21 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-primary">
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary" aria-label="Store example">
       <div class="container-fluid">
-        <a class="navbar-brand mb-0 h1 text-dark" href="/"><i>Store</i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand text-dark" href="/"><i>Store</i></a>
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#sessionmanagement" 
+          aria-controls="sessionmanagement" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <div class="collapse navbar-collapse" id="sessionmanagement">
           <%= render "_user_menu.html", assigns %>
         </div>
       </div>

@@ -25,6 +25,9 @@ store-*.tar
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
 
+# Adding config/dev to ignore my personal username and pass for development
+/config/devs.exs
+
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
 /assets/node_modules/

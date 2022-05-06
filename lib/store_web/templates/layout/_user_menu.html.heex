@@ -1,11 +1,13 @@
-<%= if @current_user do %>
-  <li class="nav-item">
-    <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
-    <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm  bg-gradient-warning  mb-0 me-1" %>
-  </li>
-<% else %>
-  <li class="nav-item">
-    <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
-    <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm  bg-gradient-secondary  mb-0 me-1" %>
-  </li>
-<% end %>
+<ul class="nav justify-content-end">
+  <%= if @current_user do %>
+    <li class="nav-item">
+      <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
+      <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm  bg-gradient-warning  mb-0 me-1" %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm  bg-gradient-secondary  mb-0 me-1" %>
+    </li>
+  <% end %>
+</ul>

@@ -6,29 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Store", suffix: " · Phoenix Framework" %>
+
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <script src="https://kit.fontawesome.com/47ed2158b5.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-primary" aria-label="Store example">
-      <div class="container-fluid">
-        <a class="navbar-brand text-dark" href="/"><i>Store</i></a>
-        <button 
-          class="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#sessionmanagement" 
-          aria-controls="sessionmanagement" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
+      <div class="container">
+        <a class="navbar-brand border-end px-4 px-lg-5" href="/" rel="tooltip" data-placement="bottom">
+          <h3 class="m-0 text-primary">Store</h3>
+        </a>
+        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon mt-2">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </span>
         </button>
-
-        <div class="collapse navbar-collapse" id="sessionmanagement">
-          <%= render "_user_menu.html", assigns %>
+        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+          <ul class="navbar-nav navbar-nav-hover mx-auto">
+            <li class="nav-item mx-2">
+              <a href="/about" class="nav-item nav-link">About</a>
+            </li>
+            <li class="nav-item mx-2">
+              <%= if @current_user do %>
+                <a href="/groceries" class="nav-item nav-link">Project</a>
+              <% else %>
+                <a href="/public/groceries" class="nav-item nav-link">Project</a>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="navbar-nav d-lg-block d-none">
+            <%= render "_user_menu.html", assigns %>
+          </ul>
         </div>
       </div>
     </nav>
+    <!-- End Navbar -->
     <%= @inner_content %>
   </body>
 </html>

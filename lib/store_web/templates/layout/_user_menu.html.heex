@@ -1,14 +1,11 @@
-<div class="navbar-nav ms-auto">
-  <%= if @current_user do %>
-    <div class="btn-group" role="group" aria-label="Session Management">
-      <span class="navbar-text me-2"><%= @current_user.email %></span>
-      <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-info" %>
-      <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-secondary" %>
-    </div>
-  <% else %>
-    <div class="btn-group" role="group" aria-label="Session Management">
-      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-secondary" %>
-      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-info" %>
-    </div>
-  <% end %>  
-</div>
+<%= if @current_user do %>
+  <li class="nav-item">
+    <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
+    <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm  bg-gradient-warning  mb-0 me-1" %>
+  </li>
+<% else %>
+  <li class="nav-item">
+    <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-sm  bg-gradient-primary  mb-0 me-1" %>
+    <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm  bg-gradient-secondary  mb-0 me-1" %>
+  </li>
+<% end %>

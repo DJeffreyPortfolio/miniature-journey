@@ -1,43 +1,236 @@
-<div class="col-lg-8 mx-auto p-3 py-md-5">
-  <main>
-    <h1>About David</h1>
-    <p class="fs-5 col-md-8">The Story</p>
-    <hr>
 
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2>A long, long time ago....</h2>
-        <p>
-          I’ve started web development in college where I’ve taken web development and advanced web development classes. 
-          I’ve studied OOP, HTML, CSS, using LAMP structuring. After college I worked through Career Foundry where I learned Ruby on Rails, 
-          JavaScript, AJAX, along with some better practices with HTML, CSS(Bootstrap).
-        </p>
-        <p>
-          I then started my first professional job as a web developer for 2 years with the Conference Board where as a Jr. Developer 
-          I worked with PHP (Laravel), Jquery, and Bootstrap CSS to (re)build the intranet.
-        </p>
-        <p>
-          The last (almost) 3 years I’ve been learning new languages (Javascript (Vue and Express), Elixir (Phoenix), updated Ruby (on Rails)),
-          and GraphQL while trying to start a business. 
-          The current language and framework I’ve settled on have been Elixir and Phoenix framework as 
-          I enjoy programming in the language and love the speed and concurrency offered by the Beam VM.
-        </p>
+<header>
+    <div class="page-header min-height-400" style="background-image: url(/images/bg2.jpg);" loading="lazy">
+      <span class="mask bg-gradient-dark opacity-8"></span>
+    </div>
+  </header>
+  <!-- -------- END HEADER --------------------------- -->
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+    <!-- START Testimonials w/ user image & text & info -->
+    <section class="py-sm-7 py-5 position-relative">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mx-auto">
+            <div class="mt-n8 mt-md-n9 text-center">
+                <%= img_tag Routes.static_path(@conn, "/images/DaveBear.jpg"),
+                    class: "img-thumbnail avatar avatar-xxl shadow-xl position-relative z-index-2",
+                    alt: "Dave Image",
+                    loading: "lazy" %>
+            </div>
+            <div class="row py-5">
+              <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="mb-0">David Jeffrey</h3>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-auto">
+                    <span>Father</span>
+                  </div>
+                  <div class="col-auto">
+                    <span>Web Developer</span>
+                  </div>
+                  <div class="col-auto">
+                    <span>Avid Traveler</span>
+                  </div>
+                </div>
+                <p class="text-lg mb-0">
+                    I’ve started web development in college where I’ve taken web development and advanced web development classes. 
+                    I’ve studied OOP, HTML, CSS, using LAMP structuring. After college I worked through Career Foundry where I learned Ruby on Rails, 
+                    JavaScript, AJAX, along with some better practices with HTML, CSS(Bootstrap).
+                </p>
+                <hr>
+                <p class="text-lg mb-0">
+                    After Career Froundy, I started my first professional job as a web developer for 2 years with the Conference Board where as a Jr. Developer. 
+                    I worked with PHP (Laravel), Jquery, and Bootstrap CSS to (re)build the intranet.
+                </p>
+                <hr>
+                <p class="text-lg mb-0">
+                    After losing my job at the start of Covid, I ventured onto my own learning new languages
+                    (Javascript (Vue and Express), Elixir (Phoenix), updated Ruby (on Rails)),
+                    and GraphQL while trying to start a business. 
+                    The current language and framework I’ve settled on have been Elixir and Phoenix framework as 
+                    I enjoy programming in the language and love the speed and concurrency offered by the Beam VM.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col-md-6">
-        <h2>Obligitory Self Image &#128512;</h2>
-        <%= img_tag Routes.static_path(@conn, "/images/dave.jpg"),
-              width: "100%", 
-              height: "300",
-              preserveAspectRatio: "xMidYMid slice"  %>
-
-        <hr>
-        <h2>Contact:</h2>
-        <ul>
-          <li>Email: D_Jeffrey@yahoo.com</li>
-          <li>Phone: (802) 624-1870</li>
-        </ul>
+    </section>
+    <!-- START Blogs w/ 4 cards w/ image & text & link -->
+    <section class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="mb-5">Current Projects</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card card-plain">
+              <div class="card-header p-0 position-relative">
+                <div class="service-icon">
+                    <i class="fa fa-solid fa-shop fa-3x"></i>
+                </div>
+              </div>
+              <div class="card-body px-0">
+                <h5>
+                    <%= if @current_user do %>
+                        <a href="/groceries" class="text-dark font-weight-bold">Store Front</a>
+                    <% else %>
+                        <a href="/public/groceries" class="text-dark font-weight-bold">Store Front</a>
+                    <% end %>
+                </h5>
+                <p>
+                  This is a basic store where you can look at the store products,
+                  but will have to log in in order to "purchase". Also when logged in,
+                  you can create new products. Just click on the "New Grocery" link,
+                  and follow the directions. If you don't want to create a new account 
+                  (you can create a new safe account by trying a test email (ie: test@test.com)
+                  with passwords being hashed using Argon2) then you can use username: test@test.com
+                  password: password1234.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card card-plain">
+              <div class="card-header p-0 position-relative">
+               <div class="service-icon">
+                    <i class="fa-solid fa-person-hiking fa-3x"></i>
+                </div>
+              </div>
+              <div class="card-body px-0">
+                <h5 class="text-dark font-weight-bold">
+                    Social Media Site
+                </h5>
+                <p>
+                  This was my entreprenurial endevor, I'm not going to go into much detail,
+                  but this was a mashup of Meta with Instagram with a sprinkling of Reddit
+                  added together to make my social media site.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card card-plain">
+              <div class="card-header p-0 position-relative">
+               <div class="service-icon">
+                    <i class="fa-solid fa-hashtag fa-3x"></i>
+                </div>
+              </div>
+              <div class="card-body px-0">
+                <h5 class="text-dark font-weight-bold">
+                    Reddit Clone
+                </h5>
+                <p>
+                  I'm testing out Rails 7 by building a Reddit clone. This project will also
+                  help me develop better frontend skills. I'll link to github
+                  but this site won't be up on Heroku for a while yet. Devs/HR can look at code
+                  and if have any questions feel free to reach out.
+                </p>
+              </div>
+            </div>            
+          </div>
+          <div class="col-lg-3 col-md-12 col-12">
+            <div class="card card-blog card-background">
+              <div class="full-background" style="background-image: url(/images/blog2.jpg)" loading="lazy"></div>
+              <div class="card-body">
+                <div class="content-left text-start my-auto py-4">
+                  <h2 class="card-title text-white">East Coast work hours</h2>
+                  <p class="card-description text-white">Remote Worker looking for work</p>
+                  <p class="card-description text-white">Some design assets and images used provided by CreativeTim @ www.creative-tim.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END Blogs w/ 4 cards w/ image & text & link -->
+  </div>
+  <section class="py-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card box-shadow-xl overflow-hidden mb-5">
+            <div class="row">
+              <div class="col-lg-5 position-relative bg-cover px-0" style="background-image: url('../assets/img/examples/blog2.jpg')" loading="lazy">
+                <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                  <div class="mask bg-gradient-dark opacity-8"></div>
+                  <div class="p-5 ps-sm-8 position-relative text-start my-auto z-index-2">
+                    <h3 class="text-white">Contact Information</h3>
+                    <p class="text-white opacity-8 mb-4">Feel free to reach out with any questions or offers.</p>
+                    <div class="d-flex p-2 text-white">
+                      <div>
+                        <i class="fas fa-phone text-sm"></i>
+                      </div>
+                      <div class="ps-3">
+                        <span class="text-sm opacity-8">(802) 673 7008</span>
+                      </div>
+                    </div>
+                    <div class="d-flex p-2 text-white">
+                      <div>
+                        <i class="fas fa-envelope text-sm"></i>
+                      </div>
+                      <div class="ps-3">
+                        <span class="text-sm opacity-8">D_Jeffrey87@yahoo.com</span>
+                      </div>
+                    </div>
+                    <div class="d-flex p-2 text-white">
+                      <div>
+                        <i class="fas fa-map-marker-alt text-sm"></i>
+                      </div>
+                      <div class="ps-3">
+                        <span class="text-sm opacity-8">Newport, VT 05855</span>
+                      </div>
+                    </div>
+                    <div class="d-flex p-2 text-white">
+                      <div>
+                        <i class="fa-solid fa-clock text-sm"></i>
+                      </div>
+                      <div class="ps-3">
+                        <span class="text-sm opacity-8">Available EST. 8am - 6pm </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="card-header px-4 py-sm-5 py-2">
+                    <h2>Say Hi!</h2>
+                    <p class="lead"> I'd love to hear from you.</p>
+                </div>
+                <div class="card-body pt-1">
+                <div class="row">
+                    <div class="col-md-12 pe-2 mb-3">
+                    <p>
+                        Full Stack Web Developer looking for work using with Phoenix
+                        Elixir or Ruby on Rails.
+                    </p>
+                    </div>
+                    <div class="col-md-12 pe-2 mb-3">
+                    <p>
+                        Remote work is preferred, but if relocation is available I can perhaps
+                        be persuaded to move and work in office.
+                    </p>
+                    </div>
+                    <div class="col-md-12 pe-2 mb-3">
+                    <h5>Skills</h5>
+                    <ul>
+                        <li>Phoenix Elixir</li>
+                        <li>Ruby on Rails</li>
+                        <li>Laravel</li>
+                        <li>HTML + CSS</li>
+                        <li>MYSQL + Postgresql</li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
-</div>
+  </section>

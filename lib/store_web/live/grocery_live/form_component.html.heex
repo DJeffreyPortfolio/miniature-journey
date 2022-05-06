@@ -9,21 +9,27 @@
     phx-change="validate"
     phx-submit="save">
 
-    <div class="mb-3">
+    <div class="input-group input-group-outline mb-3">
       <%= label f, :name, "Name: (Singular, ie: apple)", class: "form-label" %>
       <%= text_input f, :name, class: "form-control" %>
+    </div>
+    <div class="mb-2">
       <%= error_tag f, :name %>
     </div>
 
-    <div class="mb-3">    
+    <div class="input-group input-group-outline mb-3">    
       <%= label f, :quantity, class: "form-label" %>
       <%= number_input f, :quantity, class: "form-control" %>
+    </div>
+    <div class="mb-2">
       <%= error_tag f, :quantity %>
     </div>
 
-    <div class="mb-3">    
+    <div class="input-group input-group-outline mb-3">    
       <%= label f, :price, class: "form-label" %>
       <%= number_input f, :price, step: "any", class: "form-control" %>
+    </div>
+    <div class="mb-2">
       <%= error_tag f, :price %>
     </div>
   

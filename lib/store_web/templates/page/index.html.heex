@@ -1,25 +1,26 @@
-<div class="col-lg-8 mx-auto p-3 py-md-5">
-  <main>
-    <h1>David Jeffrey</h1>
-    <p class="fs-5 col-md-8">Web Developer</p>
-    <hr>
-
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2>See the store</h2>
-        <p>Here's the front of the store.</p>
-        <%= if @current_user do %>
-          <p><a href="/groceries" class="text-secondary">Product Store</a></p>
-        <% else %>
-          <p><a href="/public/groceries" class="text-secondary">Product Store</a></p>
-        <% end %>
-      </div>
-
-      <div class="col-md-6">
-        <h2>About</h2>
-        <p>All about David</p>
-        <p><a href="/about" class="text-secondary">About</a></p>
+<!-- -------- START HEADER 1 w/ text and image on right ------- -->
+<header>
+  <div class="page-header min-vh-100" style="background-image: url(&#39;https://images.unsplash.com/photo-1520769945061-0a448c463865?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80&#39;);" loading="lazy">
+    <span class="mask bg-gradient-dark opacity-5"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
+          <h1 class="text-white mb-4">Welcome</h1>
+          <p class="text-white opacity-8 lead pe-5 me-5">The portfolio site of David Jeffrey</p>
+          <div class="buttons">
+            <button type="button" class="btn btn-primary rounded-pill py-3 px-5">
+              <%= if @current_user do %>
+                <a href="/groceries" class="text-white">Store Site</a>
+              <% else %>
+                <a href="/public/groceries" class="text-white">Store Site</a>
+              <% end %>
+            </button>
+            <button type="button" class="btn btn-primary rounded-pill py-3 px-5"><a href="/about" class="text-white">About Dave</a></button>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
-</div>
+  </div>
+</header>
+<!-- -------- END HEADER 1 w/ text and image on right ------- -->
+

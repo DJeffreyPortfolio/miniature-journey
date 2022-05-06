@@ -1,36 +1,44 @@
-<div class="d-flex align-items-center justify-content-center vh-100">
-  <div class="card shadow w-50">
-    <div class="card-body">
-      <h4 class="card-title text-center">Log in</h4>
-      <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
-        <%= if @error_message do %>
-          <div class="alert alert-danger">
-            <p><%= @error_message %></p>
+<div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-lg-4 col-md-8 col-12 mx-auto">
+        <div class="card z-index-0 fadeIn3 fadeInBottom">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+              <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
+            </div>
           </div>
-        <% end %>
-
-        <div class="mb-3">
-          <%= label f, :email, class: "form-label" %>
-          <%= email_input f, :email, required: true, class: "form-control" %>
+          <div class="card-body">
+            <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
+              <%= if @error_message do %>
+                <div class="alert alert-warning text-white font-weight-bold">
+                  <p><%= @error_message %></p>
+                </div>
+              <% end %>
+              <div class="input-group input-group-outline my-3">
+                <%= label f, :email, class: "form-label" %>
+                <%= email_input f, :email, required: true, class: "form-control" %>
+              </div>
+              <div class="input-group input-group-outline mb-3">
+                <%= label f, :password, class: "form-label" %>
+                <%= password_input f, :password, required: true, class: "form-control" %>
+              </div>
+              <div class="form-check form-switch d-flex align-items-center mb-3">
+                <%= checkbox f, :remember_me, class: "form-check-input" %>
+                <%= label f, :remember_me, "Keep me logged in", class: "form-check-label" %>
+              </div>
+              <div class="text-center">
+                <%= submit "Sign in", class: "btn bg-gradient-primary w-100 my-4 mb-2" %>
+              </div>
+              <p class="mt-4 text-sm text-center">
+                <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
+                <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+              </p>
+            </.form>
+          </div>
         </div>
-
-        <div class="mb-3">
-          <%= label f, :password, class: "form-label" %>
-          <%= password_input f, :password, required: true, class: "form-control" %>
-        </div>
-
-        <div class="mb-3 form-check">
-          <%= checkbox f, :remember_me, class: "form-check-input" %>
-          <%= label f, :remember_me, "Keep me logged in", class: "form-check-label" %>
-        </div>
-
-          <%= submit "Log in", class: "btn btn-success" %>
-      </.form>
-
-      <p class="mt-3">
-        <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-        <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-      </p>
+      </div>
     </div>
   </div>
 </div>
